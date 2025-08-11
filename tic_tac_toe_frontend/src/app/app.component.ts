@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
+import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
 
+/**
+ * Root component: hosts the Tic Tac Toe game.
+ */
+// PUBLIC_INTERFACE
 @Component({
   selector: 'app-root',
-  imports: [],
+  standalone: true,
+  imports: [TicTacToeComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
-export class AppComponent {
-  title = 'tic_tac_toe_frontend is being generated';
-}
+export class AppComponent { }

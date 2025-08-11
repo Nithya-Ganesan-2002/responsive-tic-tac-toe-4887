@@ -1,0 +1,29 @@
+<div class="ttt-root">
+  <div class="ttt-status" [attr.aria-live]="'polite'">{{ statusMessage }}</div>
+  <div class="ttt-board" role="grid" aria-label="Tic Tac Toe game board">
+    <div
+      *ngFor="let row of board; let rIdx = index"
+      class="ttt-row"
+      role="row"
+    >
+      <button
+        *ngFor="let cell of row; let cIdx = index"
+        class="ttt-cell"
+        [class.ttt-cell-x]="cell === 'X'"
+        [class.ttt-cell-o]="cell === 'O'"
+        [class.ttt-cell-win]="isWinningCell(rIdx, cIdx)"
+        (click)="handleCellClick(rIdx, cIdx)"
+        [disabled]="cell || gameState !== 'playing'"
+        role="gridcell"
+        [attr.aria-label]="'Row '+(rIdx+1)+', Column '+(cIdx+1)+', '+(cell || 'empty')"
+      >
+        {{ cell }}
+      </button>
+    </div>
+  </div>
+  <div class="ttt-controls">
+    <button class="ttt-reset-btn" (click)="startNewGame()" [attr.aria-label]="'Start new game'">
+      {{ gameState === 'playing' ? 'Reset Game' : 'Start New Game' }}
+    </button>
+  </div>
+</div>
